@@ -15,6 +15,8 @@ COPY system_files /
 RUN sed -i 's@enabled=0@enabled=1@g' /etc/yum.repos.d/_copr_kylegospo-bazzite.repo
 
 RUN rpm-ostree install \
+    bat \
+    cfonts \
     cockpit-bridge \
     cockpit-kdump \
     cockpit-machines \
@@ -32,7 +34,6 @@ RUN rpm-ostree install \
     powertop \
     ripgrep \
     strace \
-    subscription-manager \
     syncthing \
     virt-install \
     virt-manager \
