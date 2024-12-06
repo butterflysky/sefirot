@@ -70,16 +70,3 @@ RUN --mount=type=cache,dst=/var/cache/rpm-ostree \
     ostree container commit
 
 
-FROM sefirot-chrome AS sefirot-nvidia
-ARG FEDORA_MAJOR_VERSION
-
-## Configure KDE & GNOME
-#RUN sed -i '/<entry name="launchers" type="StringList">/,/<\/entry>/ s/<default>[^<]*<\/default>/<default>applications:org.gnome.Prompt.desktop,preferred:\/\/browser,preferred:\/\/filemanager,applications:code.desktop,applications:steam.desktop<\/default>/' /usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/contents/config/main.xml && \
-#    sed -i '/<entry name="favorites" type="StringList">/,/<\/entry>/ s/<default>[^<]*<\/default>/<default>org.gnome.Prompt.desktop,preferred:\/\/browser,org.kde.dolphin.desktop,code.desktop,steam.desktop<\/default>/' /usr/share/plasma/plasmoids/org.kde.plasma.kickoff/contents/config/main.xml
-
-### 5. POST-MODIFICATIONS
-## these commands leave the image in a clean state after local modifications
-# Cleanup & Finalize
-RUN --mount=type=cache,dst=/var/cache/rpm-ostree \
-    /tmp/cleanup.sh && \
-    ostree container commit
