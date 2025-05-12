@@ -19,17 +19,7 @@ RUN --mount=type=cache,dst=/var/cache/rpm-ostree \
     /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:bazzite-org:bazzite.repo \
     /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:che:nerd-fonts.repo && \
     rpm-ostree install \
-    bat \
     cfonts \
-    cockpit-bridge \
-    cockpit-kdump \
-    cockpit-machines \
-    cockpit-navigator \
-    cockpit-networkmanager \
-    cockpit-podman \
-    cockpit-selinux \
-    cockpit-storaged \
-    cockpit-system \
     direnv \
     evtest \
     fd-find \
@@ -38,7 +28,6 @@ RUN --mount=type=cache,dst=/var/cache/rpm-ostree \
     nerd-fonts \
     perf \
     powertop \
-    ripgrep \
     strace \
     syncthing \
     virt-install \
