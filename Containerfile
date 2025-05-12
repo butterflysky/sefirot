@@ -12,15 +12,12 @@ ARG FEDORA_MAJOR_VERSION
 ## Copy system files over
 COPY system_files /
 
-## Diagnostics, not to stay in the final build
-RUN ls /etc/yum.repos.d
-
 ## Add infrequently-updated packages
 
 RUN --mount=type=cache,dst=/var/cache/rpm-ostree \
     sed -i -e 's@enabled=0@enabled=1@g' \
-    /etc/yum.repos.d/_copr_kylegospo-bazzite.repo \
-    /etc/yum.repos.d/_copr_che-nerd-fonts.repo && \
+    /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:bazzite-org:bazzite.repo \
+    /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:che:nerd-fonts.repo && \
     rpm-ostree install \
     bat \
     cfonts \
